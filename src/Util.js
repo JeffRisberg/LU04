@@ -1,5 +1,5 @@
 /**
- * General purpose helpers, first Math, then CAAT, then Coccon
+ * General purpose helpers, first Math, then CAAT, then Coccoon
  *
  * @author various
  * @since early 2013
