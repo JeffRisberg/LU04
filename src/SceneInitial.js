@@ -17,9 +17,9 @@ SceneMgr.prototype.addSceneInitial = function (sceneName) {
   menuCon.setLocation(W_ - btnGo.width - 10 * sf, (H_ - menuCon.height) / 2);
   scene.addChild(menuCon);
 
-  //var btnSetting = that.createButtonConPopCon("btnSetting", that.conSetting, scene, 0, 0, RBS_, RBS_);
-  //btnSetting.setLocation(10 * sf, H_ - btnSetting.height - 10 * sf);
-  //scene.addChild(btnSetting);
+  var btnSetting = that.createButtonConPopCon("btnSetting", that.conSettings, scene, 0, 0, RBS_, RBS_);
+  btnSetting.setLocation(10 * sf, H_ - btnSetting.height - 10 * sf);
+  scene.addChild(btnSetting);
 
   var logoUpper = Util.createImageActorInBound(this.director, "logoUpper", 0, 0, W_ * 0.5, H_ * 0.3)
     .enableEvents(false)

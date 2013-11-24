@@ -1,28 +1,18 @@
 // scene manager class
 function SceneMgr(director) {
   this.director = director;
+
   this.sceneNameToIndex = {};
   this.sceneNameToScene = {};
   this.sceneIndexToName = {};
-  this.loadData = {};
-  this.loadData.sceneAfterLoad = "sceneEpisodeList";
 
-  this.setting = {directPlay: 500};
-  this.status = "normal";
+  this.userInfo = new UserInfo(director);
+  this.audioMgr = new AudioMgr();
 
-  //this.leaderboardData = new LeaderboardData(this.userInfo.score);
-
-  // test gameEngine
   var that = this;
-  that.loadData.sceneAfterLoad = "sceneGame";
-
-  // create global hpBar data for BestScoreMgr and ConScore
-  that.hpBar = new ProgressBar(director);
-
   init();
 
   function init() {
-
     // User init to default
     that.sceneResetUserToDefault();
   }
@@ -122,19 +112,19 @@ SceneMgr.prototype.createButtonConSwitchScene = function (imageName, nextScene, 
   return Util.createButtonConWithImageFunInBound(that.director, imageName, pressDo, x, y, w, h);
 };
 
-// create button that will pop up container cover the whole scene when pressed
-SceneMgr.prototype.createButtonConPopCon = function (imageName, createPopConFun, scene, x, y, w, h, additionalFunBefore, fun) {
+// create button that will pop up container covering the whole scene when pressed
+SceneMgr.prototype.createButtonConPopCon = function (imageName, createPopConFunc, scene, x, y, w, h, beforeFunc, func) {
   var that = this;
 
   function pressDo(e) {
     var actor = that.getActorFromEvent(e);
-    if (additionalFunBefore) {
-      if (!additionalFunBefore(e)) {
+    if (beforeFunc) {
+      if (!beforeFunc(e)) {
         return;
       }
     }
     // set it to a value before createPopConFun using it
-    var topCon = createPopConFun.call(that, scene, actor, fun);
+    var topCon = createPopConFunc.call(that, scene, actor, func);
     scene.addChild(topCon);
   }
 
@@ -392,6 +382,14 @@ SceneMgr.prototype.createPopUp = function (msg) {
 SceneMgr.prototype.commonDoWhenSceneStart = function () {
   //var scene = this.director.getCurrentScene();
   //Util.removeAllActorWithBehaviors(scene);
+
+  if (!this.audioMgr.isBgPlaying()) {
+    this.audioMgr.audio.pause();
+  }
+
+  if (this.userInfo.settings.getValue("Music")) {
+    this.audioMgr.resetBgAudio();
+  }
 };
 
 // add grid on screen to help coordinates

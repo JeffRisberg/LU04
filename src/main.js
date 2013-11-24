@@ -17,14 +17,17 @@
     {id: "pause", url: R_ + "/images/pause.png"},
     {id: "btnBack", url: R_ + "/images/btnBack.png"},
     {id: "containerBg", url: R_ + "/images/containerBg.png"},
+    {id: "settingsConBg", url: R_ + "/images/settingsConBg.png"},
 
     {id: "scnInitialBg", url: R_ + "/images/scnInitial/bg.png"},
     {id: "logoUpper", url: R_ + "/images/scnInitial/logoUpper.png"},
     {id: "logoLower", url: R_ + "/images/scnInitial/logoLower.png"},
+    {id: "spaceShip", url: R_ + "/images/scnInitial/spaceShip.png"},
     {id: "btnGo", url: R_ + "/images/scnInitial/btnGo.png"},
     {id: "btnInfo", url: R_ + "/images/scnInitial/btnInfo.png"},
     {id: "btnSetting", url: R_ + "/images/scnInitial/btnSetting.png"},
-    {id: "spaceShip", url: R_ + "/images/scnInitial/spaceShip.png"},
+    {id: "btnEmpty", url: R_ + "/images/scnInitial/btnEmpty.png"},
+    {id: "btnChecked", url: R_ + "/images/scnInitial/btnChecked.png"},
 
     {id: "btnGameCredit", url: R_ + "/images/scnInfo/btnGameCredit.png"},
     {id: "btnMusicCredit", url: R_ + "/images/scnInfo/btnMusicCredit.png"},
