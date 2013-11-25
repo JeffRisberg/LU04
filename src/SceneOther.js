@@ -18,7 +18,7 @@ SceneMgr.prototype.addSceneOther = function (sceneName) {
   scene.addChild(btnBack);
 
   // add the title
-  var title = Util.createImageActorInBound(this.director, "scnOtherTitle", W_ * 0.2, H_ * 0.05, 300, 100)
+  var title = Util.createImageActorInBound(this.director, "scnOtherTitle", W_ * 0.2, H_ * 0.05, 360, 60)
     .enableEvents(false);
   scene.addChild(title);
 
