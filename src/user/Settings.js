@@ -75,4 +75,4 @@ function Settings() {
   };
 }
 
-Settings.prototype = new UserAttributeMgr("SETTINGS");
+Settings.prototype = new LocalStorageMgr("SETTINGS");

@@ -1,5 +1,5 @@
 /**
- * The initial screen contains buttons an a link to the other screen.
+ * The initial screen contains buttons and links to additional scenes.
  *
  * @author Jeff Risberg
  * @since November 2013

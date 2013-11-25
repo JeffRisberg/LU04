@@ -4,7 +4,7 @@
  * @param prefix
  * @constructor
  */
-function UserAttributeMgr(prefix) {
+function LocalStorageMgr(prefix) {
   this.prefix = prefix;
   this.updateServerInterval = 10; // second
   this.lastUpdateTime = 0; // second
@@ -16,8 +16,8 @@ UserAttributeMgr.prototype.getPath = function () {
     console.error("userId not valid");
     return "";
   }
-  if (Util.isTrailVersion()) {
-    return this.prefix + "_trail_" + this.userId + "_";
+  if (Util.isTrialVersion()) {
+    return this.prefix + "_trial_" + this.userId + "_";
   }
   return this.prefix + "_" + this.userId + "_";
 };

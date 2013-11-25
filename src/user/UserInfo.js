@@ -64,7 +64,7 @@ UserInfo.prototype.resetOthers = function () {
   //this.score.resetValue();
   //this.equip.resetEquip();
 
-  this.setting.resetAllSetting();
+  this.settings.resetAllSetting();
   //this.achievement.resetAllGroup();
   //this.license.resetLicense();
   //this.misc.resetMisc();
