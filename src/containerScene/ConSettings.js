@@ -99,9 +99,6 @@ SceneMgr.prototype.conSettings = function (parent) {
   if (DEBUG_.additionalButton) {
     function resetDo() {
       that.userInfo.resetOthers();
-      that.userPanel.resetAll(that.userInfo);
-      that.audioMgr.resetValue();
-      // reset all locker to be on
     }
 
     var resetBtn = Util.createButtonWithTextFun("reset all user data", resetDo);

@@ -11,7 +11,7 @@ function LocalStorageMgr(prefix) {
 }
 
 // the path is made up from a prefix and a user Id
-UserAttributeMgr.prototype.getPath = function () {
+LocalStorageMgr.prototype.getPath = function () {
   if (!this.userId) {
     console.error("userId not valid");
     return "";
@@ -22,7 +22,7 @@ UserAttributeMgr.prototype.getPath = function () {
   return this.prefix + "_" + this.userId + "_";
 };
 
-UserAttributeMgr.prototype.setValue = function (value, item) {
+LocalStorageMgr.prototype.setValue = function (value, item) {
   item = item || "";
   if (DEBUG_.userAtt) {
     console.error("set " + this.getPath() + item + " : " + value);
@@ -30,7 +30,7 @@ UserAttributeMgr.prototype.setValue = function (value, item) {
   localStorage.setItem(this.getPath() + item, value);
 };
 
-UserAttributeMgr.prototype.getValue = function (item) {
+LocalStorageMgr.prototype.getValue = function (item) {
   item = item || "";
   if (DEBUG_.userAtt) {
     console.log("get " + this.getPath() + item + ":" + localStorage.getItem(this.getPath() + item));
@@ -39,6 +39,6 @@ UserAttributeMgr.prototype.getValue = function (item) {
 };
 
 // establish a different user for the UA manager
-UserAttributeMgr.prototype.resetUser = function (userId) {
+LocalStorageMgr.prototype.resetUser = function (userId) {
   this.userId = userId;
 };
