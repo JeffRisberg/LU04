@@ -1,6 +1,6 @@
 /**
- * The other screen is reached from the initial screen, and has a slider containing button actors, and
- * a back button.
+ * The 'other' scene is reached from the 'initial' scene, and has a back button, and a slider
+ * containing button actors.
  *
  * @author Jeff Risberg
  * @since November 2013
@@ -74,16 +74,24 @@ SceneMgr.prototype.addSceneOther = function (sceneName) {
 
   // add the episodes to the slider
   for (var i = 0; i < 2; i++) {
-    createOneEpisode("Alpha", false);
-    createOneEpisode("Beta", false);
-    createOneEpisode("Gamma", false);
-    createOneEpisode("Delta", false);
+    newEpisode = createOneEpisode("Alpha", false);
+    slider.addItem(newEpisode);
+
+    newEpisode = createOneEpisode("Beta", false);
+    slider.addItem(newEpisode);
+
+    newEpisode = createOneEpisode("Gamma", false);
+    slider.addItem(newEpisode);
+
+    newEpisode = createOneEpisode("Delta", false);
+    slider.addItem(newEpisode);
   }
+  slider.resetSize();
 
   function createOneEpisode(episodeName, hasLock) {
 
     function pressDoCommon() {
-      //that.episodeMgr.setIndex(episodeName);
+      //nothing to do
     }
 
     function pressDoUnlocked() {
@@ -93,8 +101,6 @@ SceneMgr.prototype.addSceneOther = function (sceneName) {
       episodeTitleArea.setBounds(episodeInfoTexAreaPlayX, playY, 380 * sf, 100 * sf);
 
       buttonPlay.setVisible(true);
-      //buttonUnlock.setVisible(false);
-      //leftLowerCon.setVisible(true);
     }
 
     function pressDoLocked() {
@@ -114,7 +120,6 @@ SceneMgr.prototype.addSceneOther = function (sceneName) {
 
     function buttonUnlockDoEachEpisode() {
       if (episodeActor.tryUnlockSuccess()) {
-        //resetStarLevel();
         pressDoUnlocked();
       }
     }
@@ -125,7 +130,7 @@ SceneMgr.prototype.addSceneOther = function (sceneName) {
       .setSizeMy(episodeActorSize, episodeActorSize);
 
     episodeActorList.push(episodeActor);
-    return Util.createConWrapper(episodeActor);
+    return episodeActor;
   };
 
   /**
@@ -135,4 +140,3 @@ SceneMgr.prototype.addSceneOther = function (sceneName) {
     that.commonDoWhenSceneStart();
   };
 };
-

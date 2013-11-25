@@ -8,7 +8,7 @@ function Slider(scene, director, isVertical, isPopCenter) {
   this.isPopCenter = isPopCenter || false;
   this.itemLocArray = [];
   this.isCheckCenterPos = 0;
-  this.centerOffset = -30*sf;
+  this.centerOffset = -30 * sf;
   this.targetIndex = 0;
   this.number = 3;
   this.goMove = 0;
@@ -22,19 +22,19 @@ function Slider(scene, director, isVertical, isPopCenter) {
   this.gap = 20;
   this.lastTouchedActor = null;
   this.enabled = true;
-  if (DEBUG_.layout) {
+  if (true || DEBUG_.layout) {
     this.setFillStyle('blue').setAlpha(0.8);
   }
   this.setClip(true);
-  this.innerContainer  = new CAAT.ActorContainer();
+  this.innerContainer = new CAAT.ActorContainer();
   this.resetLayout();
 
-  if (DEBUG_.layout) {
+  if (true || DEBUG_.layout) {
     this.innerContainer.setFillStyle('red').setAlpha(0.2);
   }
   this.addChild(this.innerContainer);
 
-  this.paint = function( director, time) {
+  this.paint = function (director, time) {
     CAAT.ActorContainer.prototype.paint.call(this, director, time);
 
     if (!this.enabled) {
@@ -43,9 +43,9 @@ function Slider(scene, director, isVertical, isPopCenter) {
 
     if (that.goMove != 0) {
 
-      var delta = that.goMove* 10;
+      var delta = that.goMove * 10;
       this.moveBy(delta);
-      if (!that.checkLimit()){
+      if (!that.checkLimit()) {
         that.goMove = 0;
       }
       return;
@@ -53,12 +53,12 @@ function Slider(scene, director, isVertical, isPopCenter) {
 
     if (that.goAccelerate != 0) {
       var force = 1;
-      if ( this.speed > 0) {
+      if (this.speed > 0) {
         force = -force;
       }
       this.moveBy(this.speed);
       this.speed += force;
-      if ( Math.abs(this.speed) < 5 || this.checkLimitAcc()) {
+      if (Math.abs(this.speed) < 5 || this.checkLimitAcc()) {
         that.goAccelerate = 0;
         if (this.isPopCenter) {
           var dir = force;
@@ -75,29 +75,31 @@ function Slider(scene, director, isVertical, isPopCenter) {
 
     var dis;
     var speed;
-    if (that.isRevert != 0 ) {
+    if (that.isRevert != 0) {
 
       if (that.isRevert == 1) {
         var minValue;
         if (!this.isVertical) {
           minValue = this.width - this.innerContainer.width;
-          dis = minValue - this.innerContainer.x ;
+          dis = minValue - this.innerContainer.x;
           if (dis < 5) {
-            this.innerContainer.setLocation(minValue , this.innerContainer.y);
-            that.isRevert =0;
+            this.innerContainer.setLocation(minValue, this.innerContainer.y);
+            that.isRevert = 0;
             return;
           }
         } else {
           minValue = this.height - this.innerContainer.height;
-          dis = minValue - this.innerContainer.y ;
+          dis = minValue - this.innerContainer.y;
           if (dis < 5) {
             this.innerContainer.setLocation(this.innerContainer.x, minValue);
-            that.isRevert =0;
+            that.isRevert = 0;
             return;
           }
         }
-        speed = dis/10;
-        if (speed < 5) { speed = 5; }
+        speed = dis / 10;
+        if (speed < 5) {
+          speed = 5;
+        }
         this.moveBy(speed);
         return;
       }
@@ -106,7 +108,7 @@ function Slider(scene, director, isVertical, isPopCenter) {
         if (!this.isVertical) {
           dis = -this.innerContainer.x;
           if (dis > -5) {
-            this.innerContainer.setLocation(0 , this.innerContainer.y);
+            this.innerContainer.setLocation(0, this.innerContainer.y);
             that.isRevert = 0;
             return;
           }
@@ -118,26 +120,28 @@ function Slider(scene, director, isVertical, isPopCenter) {
             return;
           }
         }
-        speed = dis/10;
-        if (speed > -5) { speed = -5; }
+        speed = dis / 10;
+        if (speed > -5) {
+          speed = -5;
+        }
         this.moveBy(speed);
       }
     }
 
-    if ( this.isPopCenter ) {
-      if ( this.isCheckCenterPos != 0) {
+    if (this.isPopCenter) {
+      if (this.isCheckCenterPos != 0) {
         dis = this.isCheckCenterPos - this.innerContainer.x;
-        speed = dis/20;
-        if (Math.abs(dis) <=5 )  {
+        speed = dis / 20;
+        if (Math.abs(dis) <= 5) {
           this.innerContainer.setLocation(this.isCheckCenterPos, this.innerContainer.y);
           this.isCheckCenterPos = 0;
           return;
         }
         var speedMinAbs = 3;
         if (speed > -speedMinAbs && speed < 0) {
-          speed = - speedMinAbs;
+          speed = -speedMinAbs;
         } else {
-          if ( speed < speedMinAbs && speed > 0) {
+          if (speed < speedMinAbs && speed > 0) {
             speed = speedMinAbs;
           }
         }
@@ -151,29 +155,28 @@ function Slider(scene, director, isVertical, isPopCenter) {
 }
 
 Slider.prototype = new CAAT.ActorContainer();
-Slider.prototype.constructor =  Slider;
+Slider.prototype.constructor = Slider;
 
-Slider.prototype.setSliderBounds = function(x, y, w, h) {
+Slider.prototype.setSliderBounds = function (x, y, w, h) {
   this.setBounds(x, y, w, h);
-  this.innerContainer.setBounds(0, 0 ,w,h);
+  this.innerContainer.setBounds(0, 0, w, h);
   if (this.parent) {
     this.setTouchy();
   }
   return this;
 };
 
-
-Slider.prototype.setTouchy = function() {
+Slider.prototype.setTouchy = function () {
   var that = this;
   var pos = Util.findAbsPos(this);
   // TODO: touchy lister's y is different from actual y on scene, offset = 9, seams same on x
   var touchy = new Touchy();
   touchy.listen(
     {
-      x1:pos.x,
-      y1:pos.y,
-      x2:pos.x+that.width,
-      y2:pos.y+that.height
+      x1: pos.x,
+      y1: pos.y,
+      x2: pos.x + that.width,
+      y2: pos.y + that.height
     },
     function (e, eventType) {
 
@@ -187,7 +190,7 @@ Slider.prototype.setTouchy = function() {
         return;
       }
 
-      switch(eventType) {
+      switch (eventType) {
         case "touchstart":
           that.isCheckCenterPos = 0;
           that.goAccelerate = 0;
@@ -200,7 +203,7 @@ Slider.prototype.setTouchy = function() {
           break;
         case "touchmove":
           if (touchy.touchStarted) {
-            if ( that.isVertical == false) {
+            if (that.isVertical == false) {
               that.moveBy(touchy.deltaX);
               that.currentSlideSpeed = touchy.speedX;
             } else {
@@ -222,7 +225,7 @@ Slider.prototype.setTouchy = function() {
   return this;
 };
 
-Slider.prototype.setSpeed = function( speed) {
+Slider.prototype.setSpeed = function (speed) {
   this.goAccelerate = 1;
   this.speed = speed;
 };
@@ -234,31 +237,31 @@ Slider.prototype.isInMaxLimit = function () {
     minValue = this.width - this.innerContainer.width;
     if (this.innerContainer.x <= minValue) {
       // stop scrolling and reset
-      this.innerContainer.setLocation(minValue , this.innerContainer.y);
+      this.innerContainer.setLocation(minValue, this.innerContainer.y);
       return false;
     }
   } else {
-     minValue = this.height - this.innerContainer.height;
+    minValue = this.height - this.innerContainer.height;
     if (this.innerContainer.y <= minValue) {
       // stop scrolling and reset
-      this.innerContainer.setLocation(this.innerContainer.x , minValue);
+      this.innerContainer.setLocation(this.innerContainer.x, minValue);
       return false;
     }
   }
   return true;
 };
 
-Slider.prototype.isInMinLimit = function() {
+Slider.prototype.isInMinLimit = function () {
 
   var maxValue = 0;
   if (this.isPopCenter) {
-    maxValue = this.width/2;
+    maxValue = this.width / 2;
   }
 
   if (!this.isVertical) {
     if (this.innerContainer.x >= maxValue) {
       // stop scrolling and reset
-      this.innerContainer.setLocation( maxValue, this.innerContainer.y);
+      this.innerContainer.setLocation(maxValue, this.innerContainer.y);
       return false;
     }
   } else {
@@ -267,18 +270,17 @@ Slider.prototype.isInMinLimit = function() {
       this.innerContainer.setLocation(this.innerContainer.x, maxValue);
       return false;
     }
-
   }
   return true;
 };
 
-Slider.prototype.resetWhenActivated = function(recordLastTouch) {
+Slider.prototype.resetWhenActivated = function (recordLastTouch) {
   if (!recordLastTouch || !this.lastTouchedActor) {
     var initValue = 0;
     if (this.isPopCenter) {
       initValue = this.itemLocArray[0] + this.centerOffset;
     }
-    if ( this.isVertical) {
+    if (this.isVertical) {
       this.innerContainer.setLocation(this.innerContainer.x, initValue);
     } else {
       this.innerContainer.setLocation(initValue, this.innerContainer.y);
@@ -286,14 +288,12 @@ Slider.prototype.resetWhenActivated = function(recordLastTouch) {
   }
   this.currentSlideSpeed = 0;
   if (this.lastTouchedActor) {
-    this.lastTouchedActor.setScale(1,1);
+    this.lastTouchedActor.setScale(1, 1);
   }
 };
 
 // check if slided too much, we need to slide it back automatically
-Slider.prototype.checkLimitAcc = function() {
-
-
+Slider.prototype.checkLimitAcc = function () {
   var minValue;
   var checkingAttr;
   if (!this.isVertical) {
@@ -305,29 +305,29 @@ Slider.prototype.checkLimitAcc = function() {
   }
 
   if (this.isPopCenter) {
-    if (checkingAttr <= minValue - this.width/2 ||
-      checkingAttr >= 0 + this.width/2) {
+    if (checkingAttr <= minValue - this.width / 2 ||
+      checkingAttr >= 0 + this.width / 2) {
       return true;
     }
     return false;
   }
 
-  if (checkingAttr <= minValue ) {
+  if (checkingAttr <= minValue) {
     this.isRevert = 1;
-    if (DEBUG_.slider) console.log("revert:"+this.isRevert+" :checked "+checkingAttr+ ":vs min "+ minValue);
+    if (DEBUG_.slider) console.log("revert:" + this.isRevert + " :checked " + checkingAttr + ":vs min " + minValue);
     return true;
   }
 
   if (checkingAttr >= 0) {
     this.isRevert = -1;
-    if (DEBUG_.slider) console.log("revert:"+this.isRevert+" :checked "+checkingAttr+ ":vs max "+ 0);
+    if (DEBUG_.slider) console.log("revert:" + this.isRevert + " :checked " + checkingAttr + ":vs max " + 0);
     return true;
   }
 
   return false;
 };
 
-Slider.prototype.checkLimit = function() {
+Slider.prototype.checkLimit = function () {
   if (!this.isInMinLimit()) {
     return false;
   }
@@ -337,7 +337,7 @@ Slider.prototype.checkLimit = function() {
   return true;
 };
 
-Slider.prototype.moveBy = function( delta) {
+Slider.prototype.moveBy = function (delta) {
   if (!this.isVertical) {
     this.innerContainer.setLocation(this.innerContainer.x + delta, this.innerContainer.y);
   } else {
@@ -345,27 +345,26 @@ Slider.prototype.moveBy = function( delta) {
   }
 };
 
-
 // following three is for the button pressing to let slider go left/up and right/down
-Slider.prototype.downLU = function() {
-  if ( ! this.isInMaxLimit()) {
+Slider.prototype.downLU = function () {
+  if (!this.isInMaxLimit()) {
     return;
   }
   this.goMove = -1;
 };
 
-Slider.prototype.downRD = function() {
-  if ( ! this.isInMinLimit()) {
+Slider.prototype.downRD = function () {
+  if (!this.isInMinLimit()) {
     return;
   }
   this.goMove = 1;
 };
 
-Slider.prototype.up = function() {
+Slider.prototype.up = function () {
   this.goMove = 0;
 };
 
-Slider.prototype.addItem = function(actor) {
+Slider.prototype.addItem = function (actor) {
   if (this.isPopCenter) {
     this.itemLocArray.push(this.totalActorWidth);
   }
@@ -377,10 +376,10 @@ Slider.prototype.addItem = function(actor) {
   }
 };
 
-Slider.prototype.resetSize = function() {
+Slider.prototype.resetSize = function () {
   if (!this.isVertical) {
     var newWidth = Math.max(this.totalActorWidth, this.width);
-    newWidth=newWidth+80*sf;
+    newWidth = newWidth + 80 * sf;
     this.innerContainer.setSize(newWidth, this.innerContainer.height);
   } else {
     var newHeight = Math.max(this.totalActorHeight, this.height);
@@ -389,21 +388,21 @@ Slider.prototype.resetSize = function() {
 
   if (this.isPopCenter) {
     var i;
-    for ( i in this.innerContainer.childrenList) {
+    for (i in this.innerContainer.childrenList) {
       this.innerContainer.childrenList[i].enableEvents(false);
     }
-    for ( i in this.itemLocArray) {
-      this.itemLocArray[i] = this.width/2 - this.itemLocArray[i];
+    for (i in this.itemLocArray) {
+      this.itemLocArray[i] = this.width / 2 - this.itemLocArray[i];
     }
     this.innerContainer.setLocation(this.itemLocArray[0], this.innerContainer.y);
   }
 };
 
-Slider.prototype.emptyAllItems = function() {
+Slider.prototype.emptyAllItems = function () {
   this.innerContainer.emptyChildren();
   if (!this.isVertical) {
     this.totalActorWidth = this.padLength * 2; // front and end, twice
-    this.innerContainer.setLocation(0 , this.innerContainer.y);
+    this.innerContainer.setLocation(0, this.innerContainer.y);
   } else {
     this.totalActorHeight = this.padLength * 2; // front and end, twice
     this.innerContainer.setLocation(this.innerContainer.x, 0);
@@ -411,34 +410,35 @@ Slider.prototype.emptyAllItems = function() {
   return this;
 };
 
-Slider.prototype.setGap = function(gap) {
+Slider.prototype.setGap = function (gap) {
   this.gap = gap;
   this.resetLayout();
   return this;
 };
 
-Slider.prototype.setLayoutMy = function(layout) {
+Slider.prototype.setLayoutMy = function (layout) {
   this.innerContainer.setLayout(layout);
 };
 
-Slider.prototype.setLayoutAlign = function(h, v) {
-  Util.changeLayoutAlign(this.innerContainer.getLayout(), h,v);
+Slider.prototype.setLayoutAlign = function (h, v) {
+  Util.changeLayoutAlign(this.innerContainer.getLayout(), h, v);
   return this;
 };
 
-Slider.prototype.setLayoutPadding = function(pad) {
+Slider.prototype.setLayoutPadding = function (pad) {
   this.innerContainer.getLayout().setAllPadding(pad);
   return this;
 };
 
-Slider.prototype.resetLayout = function() {
+Slider.prototype.resetLayout = function () {
   var layM = CAAT.Foundation.UI.Layout.LayoutManager;
-  var al= layM.ALIGNMENT;
-  //var layout= new CAAT.Foundation.UI.Layout.GridLayout(1, 0).
-  this.layout= new CAAT.Foundation.UI.Layout.BoxLayout().
+  var al = layM.ALIGNMENT;
+
+  this.layout = new CAAT.Foundation.UI.Layout.BoxLayout().
     setAllPadding(this.padLength);
+
   if (!this.isVertical) {
-     this.layout.setAxis(layM.AXIS.X).
+    this.layout.setAxis(layM.AXIS.X).
       setHGap(this.gap).
       setHorizontalAlignment(al.LEFT).
       setVerticalAlignment(al.CENTER);
@@ -451,12 +451,12 @@ Slider.prototype.resetLayout = function() {
   this.innerContainer.setLayout(this.layout);
 };
 
-Slider.prototype.setEnabled = function(enabled) {
+Slider.prototype.setEnabled = function (enabled) {
   this.enabled = enabled;
   this.enableEvents(enabled);
 };
 
-Slider.prototype.applyTargetIndexPressDo = function() {
+Slider.prototype.applyTargetIndexPressDo = function () {
   var actor = this.innerContainer.childrenList[this.targetIndex];
   while (actor && !actor.fnOnClick) {
     actor = actor.childrenList[0];
