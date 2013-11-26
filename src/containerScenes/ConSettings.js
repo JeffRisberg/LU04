@@ -16,6 +16,14 @@ SceneMgr.prototype.conSettings = function (parent) {
     that.conReturnCommonDo();
   }
 
+  var goBackButton = Util.createButtonConWithImageFunInBound(that.director, "btnBack", destroyTopCon, 10 * sf, 10 * sf, RBS_, RBS_);
+  topCon.addChild(goBackButton);
+
+  var bgX = goBackButton.x + RBS_ + 2 * sf;
+  var containerBg = Util.createImageConInBound(that.director, "containerBg", bgX, H_, W_ - bgX, H_);
+  containerBg.setLocation(bgX, 0.01 * H_);
+  topCon.addChild(containerBg);
+
   var settingFontSize = 40 * sf;
   var settingFontColor = FONT_COLOR;
 
@@ -59,14 +67,6 @@ SceneMgr.prototype.conSettings = function (parent) {
     return con;
   }
 
-  var goBackButton = Util.createButtonConWithImageFunInBound(that.director, "btnBack", destroyTopCon, 10 * sf, 10 * sf, RBS_, RBS_);
-  topCon.addChild(goBackButton);
-
-  var bgX = goBackButton.x + RBS_ + 2 * sf;
-  var settingsConBg = Util.createImageConInBound(that.director, "settingsConBg", bgX, H_, W_ - bgX, H_ * 0.9);
-  settingsConBg.setLocation(bgX, 0.05 * H_);
-  topCon.addChild(settingsConBg);
-
   /*
    "Sound Fx" : 1,
    "Bg Music" : 1,
@@ -84,7 +84,7 @@ SceneMgr.prototype.conSettings = function (parent) {
     createOneSettingRow(groups[1], applyMusicSetting)
     // btnFacebookWall
   ], 10 * sf);
-  upperCon.setLocation(60 * sf, settingsConBg.height * 0.15);
+  upperCon.setLocation(60 * sf, containerBg.height * 0.15);
 
   var lowerCon = Util.createAlignContainerWithActor(VERTICAL, [
     createOneSettingRow(groups[2]),
@@ -92,9 +92,9 @@ SceneMgr.prototype.conSettings = function (parent) {
     createOneSettingRow(groups[4]),
     createOneSettingRow(groups[5])
   ], 10 * sf);
-  lowerCon.setLocation(upperCon.x + settingsConBg.width * 0.4, upperCon.y);
+  lowerCon.setLocation(upperCon.x + containerBg.width * 0.4, upperCon.y);
 
-  settingsConBg.addChild(upperCon).addChild(lowerCon);
+  containerBg.addChild(upperCon).addChild(lowerCon);
 
   if (DEBUG_.additionalButton) {
     function resetDo() {

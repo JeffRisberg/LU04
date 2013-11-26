@@ -6,7 +6,7 @@
 
   function createScenes(sceneMgr) {
     sceneMgr.addSceneInitial("sceneInitial");
-    sceneMgr.addSceneOther("sceneOther");
+    sceneMgr.addSceneSecond("sceneSecond");
     sceneMgr.addSceneThird("sceneThird");
 
     sceneMgr.director.switchToNextScene(500, true, false);
@@ -19,7 +19,6 @@
     {id: "btnBack", url: R_ + "/images/btnBack.png"},
     {id: "btnPlay", url: R_ + "/images/btnPlay.png"},
     {id: "containerBg", url: R_ + "/images/containerBg.png"},
-    {id: "settingsConBg", url: R_ + "/images/settingsConBg.png"},
 
     {id: "scnInitialBg", url: R_ + "/images/scnInitial/bg.png"},
     {id: "logoUpper", url: R_ + "/images/scnInitial/logoUpper.png"},
@@ -37,14 +36,12 @@
     {id: "picGameCredit", url: R_ + "/images/scnInfo/picGameCredit.png"},
     {id: "picMusicCredit", url: R_ + "/images/scnInfo/picMusicCredit.png"},
 
-    {id: "scnOtherBg", url: R_ + "/images/scnOther/bg.png"},
-    {id: "scnOtherTitle", url: R_ + "/images/scnOther/title.png"},
-    {id: "Alpha", url: R_ + "/images/scnOther/Alpha.png"},
-    {id: "Beta", url: R_ + "/images/scnOther/Beta.png"},
-    {id: "Gamma", url: R_ + "/images/scnOther/Gamma.png"},
-    {id: "Delta", url: R_ + "/images/scnOther/Delta.png"},
-    {id: "lock", url: R_ + "/images/scnOther/lock.png"},
-    {id: "lock2", url: R_ + "/images/scnOther/lock2.png"},
+    {id: "scnSecondBg", url: R_ + "/images/scnSecond/bg.png"},
+    {id: "scnSecondTitle", url: R_ + "/images/scnSecond/title.png"},
+    {id: "Alpha", url: R_ + "/images/scnSecond/Alpha.png"},
+    {id: "Beta", url: R_ + "/images/scnSecond/Beta.png"},
+    {id: "Gamma", url: R_ + "/images/scnSecond/Gamma.png"},
+    {id: "Delta", url: R_ + "/images/scnSecond/Delta.png"},
 
     {id: "scnThirdBg", url: R_ + "/images/scnThird/bg.png"},
     {id: "pointsImg", url: R_ + "/images/scnThird/points.png"},

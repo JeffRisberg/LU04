@@ -9,7 +9,7 @@ SceneMgr.prototype.addSceneThird = function (sceneName) {
   var that = this;
 
   var scene = this.createEmptyScene(sceneName);
-  this.addBG(scene, "scnOtherBg");
+  this.addBG(scene, "scnThirdBg");
 
   // add the back button
   var btnBack = that.createButtonConSwitchScene("btnBack", "sceneInitial", 10 * sf, 10 * sf, RBS_, RBS_);

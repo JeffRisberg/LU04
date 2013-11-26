@@ -11,16 +11,19 @@ SceneMgr.prototype.addSceneInitial = function (sceneName) {
   this.addBG(scene, "scnInitialBg");
 
   // layout
-  var btnGo = that.createButtonConSwitchScene("btnGo", "sceneOther", 0, 0, RBS_, RBS_);
-  var btnInfo = that.createButtonConPopCon("btnInfo", that.conInfo, scene, 0, 0, RBS_, RBS_);
+  var btnGoToSecond = that.createButtonConSwitchScene("btnGo", "sceneSecond", 0, 0, RBS_, RBS_);
   var btnGoToThird = that.createButtonConSwitchScene("btnThird", "sceneThird", 0, 0, RBS_, RBS_);
-  var menuCon = Util.createAlignContainerWithActor(VERTICAL, [btnGo, btnInfo, btnGoToThird], 10 * sf);
-  menuCon.setLocation(W_ - btnGo.width - 10 * sf, (H_ - menuCon.height) / 2);
+  var menuCon = Util.createAlignContainerWithActor(VERTICAL, [btnGoToSecond, btnGoToThird], 10 * sf);
+  menuCon.setLocation(W_ - btnGoToSecond.width - 10 * sf, 10 * sf);
   scene.addChild(menuCon);
 
   var btnSetting = that.createButtonConPopCon("btnSetting", that.conSettings, scene, 0, 0, RBS_, RBS_);
   btnSetting.setLocation(10 * sf, H_ - btnSetting.height - 10 * sf);
   scene.addChild(btnSetting);
+
+  var btnInfo = that.createButtonConPopCon("btnInfo", that.conInfo, scene, 0, 0, RBS_, RBS_);
+  btnInfo.setLocation(W_ - 10 * sf - btnInfo.width, H_ - btnInfo.height - 10 * sf);
+  scene.addChild(btnInfo);
 
   var logoUpper = Util.createImageActorInBound(this.director, "logoUpper", 0, 0, W_ * 0.5, H_ * 0.3)
     .enableEvents(false)
