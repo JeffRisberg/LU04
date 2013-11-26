@@ -67,22 +67,9 @@ SceneMgr.prototype.conSettings = function (parent) {
     return con;
   }
 
-  /*
-   "Sound Fx" : 1,
-   "Bg Music" : 1,
-   "Gaming Music" : 1,
-   "Arrow Control" : 1,
-   "Position Bar" : 1,
-   "Device Performance":1,2,3
-   */
-  if (Util.isFacebookOn()) {
-    var btnFacebookWall = createOneSettingRow(groups[6])
-  }
-
   var upperCon = Util.createAlignContainerWithActor(VERTICAL, [
     createOneSettingRow(groups[0], applySoundSetting),
     createOneSettingRow(groups[1], applyMusicSetting)
-    // btnFacebookWall
   ], 10 * sf);
   upperCon.setLocation(60 * sf, containerBg.height * 0.15);
 
