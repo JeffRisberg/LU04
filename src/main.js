@@ -17,6 +17,7 @@
     {id: "buttons", url: R_ + "/images/buttons.png"},
     {id: "pause", url: R_ + "/images/pause.png"},
     {id: "btnBack", url: R_ + "/images/btnBack.png"},
+    {id: "btnPlay", url: R_ + "/images/btnPlay.png"},
     {id: "containerBg", url: R_ + "/images/containerBg.png"},
     {id: "settingsConBg", url: R_ + "/images/settingsConBg.png"},
 
@@ -38,6 +39,12 @@
 
     {id: "scnOtherBg", url: R_ + "/images/scnOther/bg.png"},
     {id: "scnOtherTitle", url: R_ + "/images/scnOther/title.png"},
+    {id: "Alpha", url: R_ + "/images/scnOther/Alpha.png"},
+    {id: "Beta", url: R_ + "/images/scnOther/Beta.png"},
+    {id: "Gamma", url: R_ + "/images/scnOther/Gamma.png"},
+    {id: "Delta", url: R_ + "/images/scnOther/Delta.png"},
+    {id: "lock", url: R_ + "/images/scnOther/lock.png"},
+    {id: "lock2", url: R_ + "/images/scnOther/lock2.png"},
 
     {id: "scnThirdBg", url: R_ + "/images/scnThird/bg.png"},
     {id: "pointsImg", url: R_ + "/images/scnThird/points.png"},
