@@ -1,8 +1,8 @@
 /**
- * The other screen is reached from the initial screen, and has a slider containing button actors, and
- * a back button.
+ * The third screen is reached from the initial screen, and has a back button and some
+ * progress bars.
  *
- * @author Jeff Risberg
+ * @author Spoorthy
  * @since November 2013
  */
 SceneMgr.prototype.addSceneThird = function (sceneName) {
