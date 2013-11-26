@@ -7,6 +7,7 @@
   function createScenes(sceneMgr) {
     sceneMgr.addSceneInitial("sceneInitial");
     sceneMgr.addSceneOther("sceneOther");
+    sceneMgr.addSceneThird("sceneThird");
 
     sceneMgr.director.switchToNextScene(500, true, false);
   }
@@ -35,7 +36,10 @@
     {id: "picMusicCredit", url: R_ + "/images/scnInfo/picMusicCredit.png"},
 
     {id: "scnOtherBg", url: R_ + "/images/scnOther/bg.png"},
-    {id: "scnOtherTitle", url: R_ + "/images/scnOther/title.png"}
+    {id: "scnOtherTitle", url: R_ + "/images/scnOther/title.png"},
+
+    {id: "scnThirdBg", url: R_ + "/images/scnThird/bg.png"},
+    {id: "scnThirdTitle", url: R_ + "/images/scnThird/title.png"}
   ];
 
   function createLoadingScene(director, loadingImages) {

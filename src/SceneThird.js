@@ -5,7 +5,7 @@
  * @author Jeff Risberg
  * @since November 2013
  */
-SceneMgr.prototype.addSceneOther = function (sceneName) {
+SceneMgr.prototype.addSceneThird = function (sceneName) {
   var that = this;
 
   var scene = this.createEmptyScene(sceneName);
@@ -16,7 +16,7 @@ SceneMgr.prototype.addSceneOther = function (sceneName) {
   scene.addChild(btnBack);
 
   // add the title
-  var title = Util.createImageActorInBound(this.director, "scnOtherTitle", W_ * 0.4, H_ * 0.1, 300, 100)
+  var title = Util.createImageActorInBound(this.director, "scnOtherTitle", W_ * 0.2, H_ * 0.1, 300, 100)
     .enableEvents(false);
   scene.addChild(title);
 

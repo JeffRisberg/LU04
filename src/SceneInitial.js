@@ -13,7 +13,8 @@ SceneMgr.prototype.addSceneInitial = function (sceneName) {
   // layout
   var btnGo = that.createButtonConSwitchScene("btnGo", "sceneOther", 0, 0, RBS_, RBS_);
   var btnInfo = that.createButtonConPopCon("btnInfo", that.conInfo, scene, 0, 0, RBS_, RBS_);
-  var menuCon = Util.createAlignContainerWithActor(VERTICAL, [btnGo, btnInfo], 10 * sf);
+  var btnGoToThird = that.createButtonConSwitchScene("btnGo", "sceneThird", 0, 0, RBS_, RBS_);
+  var menuCon = Util.createAlignContainerWithActor(VERTICAL, [btnGo, btnInfo, btnGoToThird], 10 * sf);
   menuCon.setLocation(W_ - btnGo.width - 10 * sf, (H_ - menuCon.height) / 2);
   scene.addChild(menuCon);
 
