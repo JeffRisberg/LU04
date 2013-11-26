@@ -26,6 +26,7 @@
     {id: "spaceShip", url: R_ + "/images/scnInitial/spaceShip.png"},
     {id: "btnGo", url: R_ + "/images/scnInitial/btnGo.png"},
     {id: "btnInfo", url: R_ + "/images/scnInitial/btnInfo.png"},
+    {id: "btnThird", url: R_ + "/images/scnInitial/btnThird.png"},
     {id: "btnSetting", url: R_ + "/images/scnInitial/btnSetting.png"},
     {id: "btnEmpty", url: R_ + "/images/scnInitial/btnEmpty.png"},
     {id: "btnChecked", url: R_ + "/images/scnInitial/btnChecked.png"},
@@ -39,7 +40,13 @@
     {id: "scnOtherTitle", url: R_ + "/images/scnOther/title.png"},
 
     {id: "scnThirdBg", url: R_ + "/images/scnThird/bg.png"},
+    {id: "pointsImg", url: R_ + "/images/scnThird/points.png"},
+    {id: "progressBarCt", url: R_ + "/images/scnThird/progressBarCt.png"},
+    {id: "progressBarBg", url: R_ + "/images/scnThird/progressBarBg.png"},
+
     {id: "scnThirdTitle", url: R_ + "/images/scnThird/title.png"}
+
+
   ];
 
   function createLoadingScene(director, loadingImages) {
