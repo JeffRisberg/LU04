@@ -74,11 +74,18 @@ SceneMgr.prototype.addSceneInitial = function (sceneName) {
   });
 
   /**
-   * This is called by CAAT when the scene is fully loaded
+   * This is called by CAAT when the scene becomes the current scene
    */
   scene.activated = function () {
     that.commonDoWhenSceneStart();
 
     spaceShip.addBehavior(path_behavior);
   };
+
+  /**
+   * This is called by CAAT when the scene stops being the current scene
+   */
+  scene.goOut = function () {
+    a = 1; // meaningless statement so that we could put a breakpoint here
+  }
 };

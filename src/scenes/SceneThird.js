@@ -57,10 +57,17 @@ SceneMgr.prototype.addSceneThird = function (sceneName) {
 
 
   /**
-   * This is called by the CAAT when the scene is fully loaded
+   * This is called by the CAAT when the scene becomes the current scene
    */
   scene.activated = function () {
     that.commonDoWhenSceneStart();
   };
+
+  /**
+   * This is called by CAAT when the scene stops being the current scene
+   */
+  scene.goOut = function () {
+    a = 3; // meaningless statement so that we could put a breakpoint here
+  }
 };
 
