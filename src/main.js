@@ -111,7 +111,7 @@
   director.addAudio("btnSound", R_ + "/music/btnSound" + MF_);
   window['W_'] = director.width;
   window['H_'] = director.height;
-  window['sf'] = calculateSF(W_, H_);
+  window['sf'] = Math.min(W_ / 1000, H_ / 500);
   window['RBS_'] = 115 * sf;
   if (W_ / H_ < 1.6) {
     window['RBS_'] = 130 * sf;
@@ -144,11 +144,4 @@
 
   // begin main CAAT loop, with timing parameter
   CAAT.loop(60);
-
-  function calculateSF(w, h) {
-    var sf_1 = w / 1000;
-    var sf_2 = h / 500;
-    return Math.min(sf_1, sf_2)
-  }
-
 })();
