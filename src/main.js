@@ -16,6 +16,7 @@
     {id: "general", url: R_ + "/images/general.png"},
     {id: "buttons", url: R_ + "/images/buttons.png"},
     {id: "pause", url: R_ + "/images/pause.png"},
+    {id: "carrot", url: R_ + "/images/carrot.png"},
     {id: "btnBack", url: R_ + "/images/btnBack.png"},
     {id: "btnPlay", url: R_ + "/images/btnPlay.png"},
     {id: "containerBg", url: R_ + "/images/containerBg.png"},
@@ -44,13 +45,9 @@
     {id: "Delta", url: R_ + "/images/scnSecond/Delta.png"},
 
     {id: "scnThirdBg", url: R_ + "/images/scnThird/bg.png"},
-    {id: "pointsImg", url: R_ + "/images/scnThird/points.png"},
+    {id: "scnThirdTitle", url: R_ + "/images/scnThird/title.png"},
     {id: "progressBarCt", url: R_ + "/images/scnThird/progressBarCt.png"},
-    {id: "progressBarBg", url: R_ + "/images/scnThird/progressBarBg.png"},
-
-    {id: "scnThirdTitle", url: R_ + "/images/scnThird/title.png"}
-
-
+    {id: "progressBarBg", url: R_ + "/images/scnThird/progressBarBg.png"}
   ];
 
   function createLoadingScene(director, loadingImages) {

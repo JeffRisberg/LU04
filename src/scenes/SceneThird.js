@@ -1,6 +1,5 @@
 /**
- * The third screen is reached from the initial screen, and has a back button and some
- * progress bars.
+ * The third screen is reached from the initial screen, and shows key user information.
  *
  * @author Spoorthy
  * @since November 2013
@@ -20,15 +19,15 @@ SceneMgr.prototype.addSceneThird = function (sceneName) {
     .enableEvents(false);
   scene.addChild(title);
 
-  var moneyGem = Util.createImageConInBound(this.director, "pointsImg", 0, 0, 50 * sf, 50 * sf);
+  var moneyGem = Util.createImageConInBound(this.director, "carrot", 0, 0, 50 * sf, 50 * sf);
   this.moneyGemText = Util.createText("0", 40 * sf);
   var moneyCon = Util.createAlignContainerWithActor(false, [moneyGem, this.moneyGemText], 0);
-  moneyCon.setLocation(0.55 * W_, 10 * sf);//location for money
+  moneyCon.setLocation(0.55 * W_, 10 * sf);
   scene.addChild(moneyCon);
 
+  // Water
   this.waterActor = Util.createText("Water", 30 * sf);
   this.waterLevelActor = Util.createText("Goal 2013", 20 * sf);
-
 
   this.progressBarWater = new ProgressBar(this.director).setImage("progressBarCt", 220 * sf, 30 * sf);
   this.waterLevelActor.centerAt(this.progressBarWater.width / 2, this.progressBarWater.height / 2);
@@ -40,10 +39,9 @@ SceneMgr.prototype.addSceneThird = function (sceneName) {
   conVerticalWater.setBounds(160 * sf, 20 * sf, conVerticalWater.width, conVerticalWater.height);
   scene.addChild(conVerticalWater);
 
-
-  this.materialsActor = Util.createText("Material", 30 * sf);
+  // Materials
+  this.materialsActor = Util.createText("Materials", 30 * sf);
   this.materialsLevelActor = Util.createText("Goal 2013", 20 * sf);
-
 
   this.progressBarMaterial = new ProgressBar(this.director).setImage("progressBarCt", 220 * sf, 30 * sf);
   this.materialsLevelActor.centerAt(this.progressBarMaterial.width / 2, this.progressBarMaterial.height / 2);
@@ -52,15 +50,18 @@ SceneMgr.prototype.addSceneThird = function (sceneName) {
 
   var conVerticalMaterial = Util.createAlignContainerWithActor(true,
     [this.materialsActor, this.progressBarMaterial], 10 * sf);
-  conVerticalMaterial.setBounds(160 * sf, 100 * sf, conVerticalMaterial.width, conVerticalMaterial.height);
+  conVerticalMaterial.setBounds(160 * sf, 120 * sf, conVerticalMaterial.width, conVerticalMaterial.height);
   scene.addChild(conVerticalMaterial);
 
-
   /**
-   * This is called by the CAAT when the scene becomes the current scene
+   * This is called by CAAT when the scene becomes the current scene
    */
   scene.activated = function () {
     that.commonDoWhenSceneStart();
+
+    that.moneyGemText.setText("" + Math.floor(200 * Math.random()));
+    that.progressBarWater.setPercent(Math.random());
+    that.progressBarMaterial.setPercent(Math.random());
   };
 
   /**
